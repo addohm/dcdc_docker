@@ -1,4 +1,4 @@
-name: cdc_project
+name: dcdc_project
 services:
   django:
     image: cdc-django:latest
@@ -9,10 +9,10 @@ services:
     ports:
       - "80:8000"
     volumes:
-      - /home/addohm/dcdc_docker/django/cdc_project/media:/project/media
-      - /home/addohm/dcdc_docker/django/cdc_project/static:/project/static:ro
+      - /home/addohm/dcdc_docker/cdc_project/media:/project/media
+      - /home/addohm/dcdc_docker/cdc_project/static:/project/static:ro
     env_file:
-      - /home/addohm/dcdc_docker/django/cdc_project/.env
+      - /home/addohm/dcdc_docker/cdc_project/.env
   db:
     image: postgres:17.2-alpine3.21
     container_name: dcdc_postgres
@@ -21,16 +21,16 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     env_file:
-      - /home/addohm/dcdc_docker/django/cdc_project/.env
+      - /home/addohm/dcdc_docker/cdc_project/.env
   frontend-proxy:
     image: nginx:1.27.3-alpine-slim
     container_name: dcdc_nginx
     ports:
       - "8001:80"
     volumes:
-      - /home/addohm/dcdc_docker/django/cdc_project/nginx.conf:/etc/nginx/nginx.conf:ro
-      - /home/addohm/dcdc_docker/django/cdc_project/static:/static:ro
-      - /home/addohm/dcdc_docker/django/cdc_project/media:/media:ro
+      - /home/addohm/dcdc_docker/cdc_project/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /home/addohm/dcdc_docker/cdc_project/static:/static:ro
+      - /home/addohm/dcdc_docker/cdc_project/media:/media:ro
     depends_on:
       - django
 volumes:
