@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block maincontent %}
+  
+  <!-- Main Content -->
+  <main class="container mt-4">
+    <h1 class="text-center mb-4">Follow Us on Social Media</h1>
+    <p class="text-center mb-5">Stay connected with us for the latest updates, photos, and videos from our cave diving adventures.</p>
+    <!-- Social Media Links -->
+    <div class="row justify-content-center">
+      {% for social in socials %}
+      <!-- Facebook -->
+      <div class="col-md-2 col-sm-4 col-6 text-center mb-4">
+        <a href="{{ social.link }}" target="_blank">
+          <!-- Figure out how to get the URL of the image stored -->
+          <img src="{% static 'images/socials/' %}{{ social.name }}.png" alt="{{ social.name }}" class="img-fluid social-icon">
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+
+{% endblock %}

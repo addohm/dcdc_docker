@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block maincontent %}
+  
+  <!-- Main Content -->
+  <main class="container mt-4">
+    <h1 class="text-center mb-4">Where we dive</h1>
+    <p class="text-center mb-5">Explore our top cave diving locations around the world.  Ask about other locations!</p>
+
+    <!-- Location Tiles -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for divesite in divesites %}
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ divesite.name }} - {{ divesite.country }}</h5>
+            <img src="{{ divesite.image.url }}" alt="{{ divesite.name }}" class="img-fluid mb-3 dscard-img">
+            <p class="card-text">
+              {{ divesite.description }}
+            </p>
+            <a href="{{ divesite.map_url }}" target="_blank">
+              {{ divesite.citystateprov }}, {{ divesite.country }}
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+
+  {% endblock %}
+
+
+  

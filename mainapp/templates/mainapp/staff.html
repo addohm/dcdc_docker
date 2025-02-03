@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block maincontent %}
+<main class="container mt-4">
+    <h1 class="text-center mb-4">Our Staff</h1>
+    <p class="text-center mb-5">Meet our professional and experienced crew.</p>
+    <!-- Staff Page Content -->
+    <div class="container mt-5">
+        {% for staff in staff_members %}
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <img src="{{ staff.image.url }}" class="staff-img img-fluid" alt="{{ staff.name }}">
+                </div>
+                <div class="col-md-6">
+                    <h2>{{ staff.name }}</h2>
+                    <p>{{ staff.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

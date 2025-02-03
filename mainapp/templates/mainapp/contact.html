@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block maincontent %}
+
+  <!-- Main Content -->
+  <main class="container mt-4">
+    <h1 class="text-center mb-4">Contact Us</h1>
+    <p class="text-center mb-5">Have questions or want to book an adventure? Reach out to us!</p>
+    <!-- Contact Form -->
+    <form class="row g-3" method="POST">
+      {% csrf_token %}
+      <div class="col-md-4">
+        {{ form.name.errors }}
+        <label for="name" class="form-label">{{ form.name.label }}</label>
+        {{ form.name }}
+      </div>
+      <div class="col-md-4">
+        {{ form.email.errors }}
+        <label for="email" class="form-label">{{ form.email.label }}</label>
+        {{ form.email }}
+      </div>
+      <div class="col-md-4">
+        {{ form.phone.errors }}
+        <label for="email" class="form-label">{{ form.phone.label }}</label>
+        {{ form.phone }}
+      </div>
+      <div class="col-12">
+        {{ form.subject.errors }}
+        <label for="message" class="form-label">{{ form.subject.label }}</label>
+        {{ form.subject }}
+      </div>
+      <div class="col-12">
+        {{ form.message.errors }}
+        <label for="message" class="form-label">{{ form.message.label }}</label>
+        {{ form.message }}
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </div>
+    </form>
+  </main>
+
+  {% endblock %}

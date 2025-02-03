@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block morehead %}
+  <meta http-equiv = "refresh" content = "5; url = {% url 'index' %}" />
+{% endblock %}
+
+{% block maincontent %}
+
+  <!-- Main Content -->
+  <main class="container mt-4">
+    <h1 class="text-center mb-4">Message sent!</h1>
+    <p class="text-center mb-5">We will respond as quickly as possible.  In the mean time, check out our social media pages!</p>
+    <p class="text-center mb-5">You'll be redirected back to the home page shortly.</p>
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center mb-4">
+        ░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░░
+        ░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░
+        ░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░
+        ░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░
+        ░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░
+        █░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█
+        █░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█
+        ░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░
+        ░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░
+        ░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░
+        ░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░
+        ░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░
+        ░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░
+        ░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░
+        ░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░▄█░░
+        </div>
+    </div>
+  </main>
+
+  {% endblock %}
