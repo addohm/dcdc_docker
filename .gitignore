@@ -8,8 +8,10 @@ __pycache__/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-media
-static
+media/*
+static/*
+staticfiles/*
+_static/*
 reset_migrations.py
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/

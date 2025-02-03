@@ -3,9 +3,17 @@
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-static
+staticfiles
+# static
 media
 reset_migrations.py
+
+# nginx
+nginx.conf
+
+# git stuff
+.git/
+.gitignore
 
 # Docker stuff
 Dockerfile

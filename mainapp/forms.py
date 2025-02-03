@@ -21,17 +21,14 @@ class ContactForm(forms.ModelForm):
 
     def save(self):
         instance = super(ContactForm, self).save()
-        print(instance.subject)
 
         @transaction.on_commit
         def contact_sendemail():
             send_mail(
                 instance.subject,
                 instance.message,
-                config("EMAIL_HOST_USER"),
-                [instance.email],
+                instance.email,
+                [config("EMAIL_HOST_USER")],
                 fail_silently=False,
             )
-            print("Email sent, maybe?")
-        print("Form saved, check email.")
         return instance

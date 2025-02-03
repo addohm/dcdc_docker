@@ -1,4 +1,4 @@
-FROM python:3.14.0a4-alpine3.21
+FROM python:3.13.1-alpine3.21
 
 # Set the project port to run on
 ENV APP_PORT=8000
@@ -12,14 +12,16 @@ ENV PYTHONBUFFERED=1
 # Make the home directory if it does not exist, create the user, and assign ownership to that user
 RUN addgroup -S django && \
     adduser -h /project -S django -G django && \
-    install -d -m 0755 -o django -g django /project
+    install -d -m 0765 -o django -g django /project \
+    install -d -m 0765 -o django -g django /project/media \
+    install -d -m 0765 -o django -g django /project/staticfiles
 
 # Update apk and install psycopg2 and pillow dependencies
 RUN apk update
 RUN apk add postgresql-dev zlib-dev jpeg-dev
 
 # Upgrade pip to ensure we have the latest version for installing dependencies
-RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir --root-user-action ignore --upgrade pip
 
 # Check for python3 and pip installation and output version
 RUN python3 --version
@@ -35,18 +37,13 @@ COPY --chown=django:django . .
 RUN chmod +x entrypoint.sh
 
 # Install dependencies from the requirements.txt file to ensure our Python environment is>
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --root-user-action ignore -r requirements.txt
 
 # Inform Docker that the container listens on the specified network port at runtime
 EXPOSE ${APP_PORT}
 
-# Switch to non-root user
-USER django
-
-# Create the static and media directories, output the project directory list for good measure
-RUN mkdir /project/media && \ 
-    mkdir /project/static && \
-    ls -lda /project/*
+# Create the staticfiles and media directories, output the project directory list for good measure
+RUN ls -lda /project/*
 
 # Start the application using gunicorn
 ENTRYPOINT [ "/project/entrypoint.sh" ]

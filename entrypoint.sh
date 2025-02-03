@@ -1,8 +1,10 @@
 #!/bin/sh
-python manage.py collectstatic --noinput
+# chown -R django:django /project
+# exec runuser -u django "$@"
 python manage.py makemigrations --noinput
 python manage.py migrate --noinput
 python manage.py createcachetable
+python manage.py collectstatic --noinput
 
 if [ "$DJANGO_SUPERUSER_USERNAME" ]
 then

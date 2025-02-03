@@ -5,17 +5,21 @@ from decouple import config
 
 mimetypes.add_type("text/css", ".css", True)
 
-PROJECT_NAME = environ.get("PROJECT_NAME")
 PROJECT_FILES_URL='https://dcdc.files.addohm.net/'
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+PROJECT_NAME = BASE_DIR.name
 
 SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['*']
-INTERNAL_IPS = ['10.0.0.250', '10.0.0.3']
+INTERNAL_IPS = ['10.0.0.250', '10.0.0.3', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", cast=lambda v: [s.strip() for s in v.split(',')])
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -114,21 +118,21 @@ if ENABLE_DEBUG_TOOLBAR:
 # STATICFILES_DIRS: This lists additional directories that Django's collectstatic tool 
 # should search for static files.
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    f"{BASE_DIR}/_static",
 ]
 
 # STATIC_ROOT: This is the absolute path to a directory where Django's collectstatic tool 
 # will gather any static files referenced in our templates. Once collected, these can then be uploaded as a group to wherever the files are to be hosted.
-STATIC_ROOT = f"{PROJECT_NAME}/staticfiles"
+STATIC_ROOT = "/project/staticfiles"
 
 # STATIC_URL: This is the base URL location from which static files will be served, 
 # for example on a CDN.
-STATIC_URL = f"{PROJECT_FILES_URL}static/"
+STATIC_URL = "static/"
 
 # MEDIA_ROOT: This is the absolute path to a directory where Django will gather any user uploaded images and files
 # ex: /var/www/files/media
-MEDIA_ROOT = f"{PROJECT_NAME}/media"
+MEDIA_ROOT = "/project/media"
 
 # MEDIA_URL: This is the base URL location from which static files will be served, 
 # for example on a CDN.
-MEDIA_URL = f"{PROJECT_FILES_URL}media/"
+MEDIA_URL = "media/"
