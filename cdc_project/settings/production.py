@@ -5,8 +5,6 @@ import mimetypes
 
 mimetypes.add_type("text/css", ".css", True)
 
-PROJECT_FILES_URL='https://dcdc.files.addohm.net/'
-
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 PROJECT_NAME = BASE_DIR.name

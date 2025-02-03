@@ -27,8 +27,8 @@ class ContactForm(forms.ModelForm):
             send_mail(
                 instance.subject,
                 instance.message,
-                instance.email,
-                [config("EMAIL_HOST_USER")],
-                fail_silently=False,
+                config("EMAIL_HOST_USER"),
+                [instance.email],
+                fail_silently=True,
             )
         return instance

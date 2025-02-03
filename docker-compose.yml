@@ -11,7 +11,7 @@ services:
       - ./.env
 
   django:
-    image: cdc-django:latest
+    image: django:latest
     container_name: dcdc_django
     depends_on:
       - postgresdb
