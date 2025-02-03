@@ -51,10 +51,5 @@ RUN mkdir /project/media && \
 # Start the application using gunicorn
 ENTRYPOINT [ "/project/entrypoint.sh" ]
 
-# # Set the command to run our web service using Gunicorn, binding it to 0.0.0.0 and the >
-# CMD gunicorn project.wsgi:application --bind 0.0.0.0:"${APP_PORT}"
-
 # Used to hold container open for troubleshooting 
 # CMD ping -i 5.0 127.0.0.1
-
-# docker build -t cdc-django:latest . --platform=linux/arm64 --no-cache
