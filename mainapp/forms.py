@@ -1,5 +1,5 @@
 from django import forms
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.core.validators import EmailValidator
 from django.db import transaction
 from decouple import config
@@ -24,11 +24,12 @@ class ContactForm(forms.ModelForm):
 
         @transaction.on_commit
         def contact_sendemail():
-            send_mail(
-                instance.subject,
-                instance.message,
+            email = EmailMessage(
+                f"From: {instance.email} -> {instance.subject}",
+                f"({instance.email}) -> {instance.message}",
                 config("EMAIL_HOST_USER"),
-                [instance.email],
-                fail_silently=True,
+                [config("EMAIL_HOST_USER")],
+                reply_to=[instance.email],
             )
+            email.send(fail_silently=True)
         return instance
