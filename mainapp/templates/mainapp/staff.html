@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 
 {% block maincontent %}
-<main class="container mt-4">
-    <h1 class="text-center mb-4">Our Staff</h1>
+    <h1 class="text-center mb-2">Our Staff</h1>
     <p class="text-center mb-5">Meet our professional and experienced crew.</p>
     <!-- Staff Page Content -->
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         {% for staff in staff_members %}
             <div class="row mt-4">
                 <div class="col-md-6">
@@ -18,5 +17,4 @@
             </div>
         {% endfor %}
     </div>
-</main>
 {% endblock %}
