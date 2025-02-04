@@ -18,6 +18,7 @@ CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", cast=lambda v: [s.strip() 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,3 +125,98 @@ MEDIA_ROOT = "/project/media"
 # MEDIA_URL: This is the base URL location from which static files will be served, 
 # for example on a CDN.
 MEDIA_URL = "media/"
+
+
+# https://django-jazzmin.readthedocs.io/
+JAZZMIN_SETTINGS = {
+    "site_title": "CDC Admin",
+    "site_header": "Cave Dive Club",
+    "site_brand": "Cave Dive Club",
+    "site_logo": "/images/logos/cdc_logo_transinv_sm.png",
+    "login_logo": '/images/logos/cdc_logo_trans_sm.png',
+    "login_logo_dark": '/images/logos/cdc_logo_transinv_sm.png',
+    "site_logo_classes": "",
+    "site_icon": '/images/favicons/favicon-32x32.png',
+    "welcome_sign": "Welcome to the CDC Admin",
+    "copyright": "Cave Dive Club",
+    "user_avatar": None,
+
+    ############
+    # Top Menu #
+    ############
+
+    "topmenu_links": [
+        {"name": "Home",  "url": "", "permissions": ["auth.view_user"]},
+        {"name": "Support", "url": "https://github.com/addohm/dcdc_docker", "new_window": True},
+    ],
+
+    #############
+    # User Menu #
+    #############
+
+    "usermenu_links": [
+        {"name": "Support", "url": "https://github.com/addohm/dcdc_docker", "new_window": True},
+        {"model": "auth.user"}
+    ],
+
+    #############
+    # Side Menu #
+    #############
+
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": ["mainapp", "mainapp.contact", "mainapp.divesites", "mainapp.products", "auth"],
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+
+    #################
+    # Related Modal #
+    #################
+    "related_modal_active": False,
+
+    #############
+    # UI Tweaks #
+    #############
+    "custom_css": None,
+    "custom_js": None,
+    "use_google_fonts_cdn": True,
+    "show_ui_builder": True,
+
+    ###############
+    # Change view #
+    ###############
+    "changeform_format": "horizontal_tabs",
+    "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
+    "language_chooser": False,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": True,
+    "footer_small_text": True,
+    "body_small_text": True,
+    "brand_small_text": True,
+    "navbar": "navbar-dark",
+    "sidebar": "sidebar-dark-navy",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": True,
+    "sidebar_nav_compact_style": True,
+    "sidebar_nav_flat_style": True,
+    "theme": "yeti",
+    "dark_mode_theme": "solar",
+    "button_classes": {
+        "primary": "btn-outline-primary",
+        "secondary": "btn-outline-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}
