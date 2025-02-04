@@ -100,6 +100,28 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# STATICFILES_DIRS: This lists additional directories that Django's collectstatic tool 
+# should search for static files.
+STATICFILES_DIRS = [
+    f"{BASE_DIR}/_static",
+]
+
+# STATIC_ROOT: This is the absolute path to a directory where Django's collectstatic tool 
+# will gather any static files referenced in our templates. Once collected, these can then be uploaded as a group to wherever the files are to be hosted.
+STATIC_ROOT = "./staticfiles"
+
+# STATIC_URL: This is the base URL location from which static files will be served, 
+# for example on a CDN.
+STATIC_URL = "static/"
+
+# MEDIA_ROOT: This is the absolute path to a directory where Django will gather any user uploaded images and files
+# ex: /var/www/files/media
+MEDIA_ROOT = "./media"
+
+# MEDIA_URL: This is the base URL location from which static files will be served, 
+# for example on a CDN.
+MEDIA_URL = "media/"
+
 ENABLE_DEBUG_TOOLBAR = DEBUG and "test" not in sys.argv
 if ENABLE_DEBUG_TOOLBAR:
     SECURE_CROSS_ORIGIN_OPENER_POLICY = None
@@ -111,30 +133,6 @@ if ENABLE_DEBUG_TOOLBAR:
         "debug_toolbar.middleware.DebugToolbarMiddleware",
     ]
     DEBUG_TOOLBAR_CONFIG = {"ROOT_TAG_EXTRA_ATTRS": "data-turbo-permanent hx-preserve"}
-
-
-# STATICFILES_DIRS: This lists additional directories that Django's collectstatic tool 
-# should search for static files.
-STATICFILES_DIRS = [
-    f"{BASE_DIR}/_static",
-]
-
-# STATIC_ROOT: This is the absolute path to a directory where Django's collectstatic tool 
-# will gather any static files referenced in our templates. Once collected, these can then be uploaded as a group to wherever the files are to be hosted.
-STATIC_ROOT = "/project/staticfiles"
-
-# STATIC_URL: This is the base URL location from which static files will be served, 
-# for example on a CDN.
-STATIC_URL = "static/"
-
-# MEDIA_ROOT: This is the absolute path to a directory where Django will gather any user uploaded images and files
-# ex: /var/www/files/media
-MEDIA_ROOT = "/project/media"
-
-# MEDIA_URL: This is the base URL location from which static files will be served, 
-# for example on a CDN.
-MEDIA_URL = "media/"
-
 
 # https://django-jazzmin.readthedocs.io/
 JAZZMIN_SETTINGS = {
