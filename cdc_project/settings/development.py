@@ -5,8 +5,6 @@ from decouple import config
 
 mimetypes.add_type("text/css", ".css", True)
 
-PROJECT_FILES_URL='https://dcdc.files.addohm.net/'
-
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 PROJECT_NAME = BASE_DIR.name
@@ -14,7 +12,6 @@ PROJECT_NAME = BASE_DIR.name
 SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
-
 
 ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = ['10.0.0.250', '10.0.0.3', '127.0.0.1']
