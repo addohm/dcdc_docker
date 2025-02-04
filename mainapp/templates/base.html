@@ -41,6 +41,9 @@
                     <li class="nav-item">
                         <a class="nav-link {% if viewname == 'socials' %}active{% endif %}" href="{% url 'socials' %}">Socials</a>
                     </li>
+		    <li class="nav-item">
+			<a href="https://fs.addohm.net/" class="nav-link" onClick="FileShare=window.open('http://fs.addohm.net/','FileShare','width=800,height=600'); return false;">Media Share</a>
+		    </li>
                     <li class="nav-item">
                         <a class="nav-link {% if viewname == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
                     </li>

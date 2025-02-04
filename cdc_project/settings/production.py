@@ -144,17 +144,17 @@ JAZZMIN_SETTINGS = {
     # Top Menu #
     ############
 
-    # "topmenu_links": [
-    #     {"name": "Home",  "url": "", "permissions": ["auth.view_user"]},
-    #     {"name": "Support", "url": "https://github.com/addohm/dcdc_docker", "new_window": True},
-    # ],
+    "topmenu_links": [
+        {"name": "View Site",  "url": "index"},
+        {"name": "Support", "url": "https://github.com/addohm/dcdc_docker/issues", "new_window": True},
+    ],
 
     #############
     # User Menu #
     #############
 
     "usermenu_links": [
-        {"name": "Support", "url": "https://github.com/addohm/dcdc_docker", "new_window": True},
+        {"name": "Support", "url": "https://github.com/addohm/dcdc_docker/issues", "new_window": True},
     ],
 
     #############
