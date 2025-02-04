@@ -126,7 +126,6 @@ MEDIA_ROOT = "/project/media"
 # for example on a CDN.
 MEDIA_URL = "media/"
 
-
 # https://django-jazzmin.readthedocs.io/
 JAZZMIN_SETTINGS = {
     "site_title": "CDC Admin",
@@ -145,10 +144,10 @@ JAZZMIN_SETTINGS = {
     # Top Menu #
     ############
 
-    "topmenu_links": [
-        {"name": "Home",  "url": "", "permissions": ["auth.view_user"]},
-        {"name": "Support", "url": "https://github.com/addohm/dcdc_docker", "new_window": True},
-    ],
+    # "topmenu_links": [
+    #     {"name": "Home",  "url": "", "permissions": ["auth.view_user"]},
+    #     {"name": "Support", "url": "https://github.com/addohm/dcdc_docker", "new_window": True},
+    # ],
 
     #############
     # User Menu #
@@ -156,7 +155,6 @@ JAZZMIN_SETTINGS = {
 
     "usermenu_links": [
         {"name": "Support", "url": "https://github.com/addohm/dcdc_docker", "new_window": True},
-        {"model": "auth.user"}
     ],
 
     #############
@@ -187,7 +185,7 @@ JAZZMIN_SETTINGS = {
     "custom_css": None,
     "custom_js": None,
     "use_google_fonts_cdn": True,
-    "show_ui_builder": True,
+    "show_ui_builder": False,
 
     ###############
     # Change view #
@@ -209,8 +207,11 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_nav_child_indent": True,
     "sidebar_nav_compact_style": True,
     "sidebar_nav_flat_style": True,
-    "theme": "yeti",
+    "theme": "solar",
     "dark_mode_theme": "solar",
+    "navbar_fixed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": True,
     "button_classes": {
         "primary": "btn-outline-primary",
         "secondary": "btn-outline-secondary",
