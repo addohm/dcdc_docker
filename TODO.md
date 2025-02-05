@@ -1,1 +1,1 @@
-* Publish barebones to dockerhub
+* Publish barebones to dockerhub and github
