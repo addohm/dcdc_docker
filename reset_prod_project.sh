@@ -1,7 +1,8 @@
 #!/bin/sh
 
 docker compose down
-rm -Rf ./staticfiles
-rm -Rf ./media
+sudo rm -Rf ./staticfiles/*
+sudo rm -Rf ./media/*
+sudo rm -Rf ./fileshare/*
 docker build -t django:latest .
 docker compose up --detach

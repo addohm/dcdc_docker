@@ -16,21 +16,34 @@ for item in os.listdir(root):
       os.remove(f'{root}/{item}')
     print(f"- {root}/{item}.")
 
-# Delete the STATICFILES folder
-  if os.path.isdir(f'{root}/{item}'):
-    print(f'> {root}/{item}')
-    if item == 'staticfiles':
-      if os.path.isdir(f'{root}/{item}'):
-        shutil.rmtree(f'{root}/{item}')
-        print(f"- {root}/{item}")
-
 # Delete USER UPLOADED MEDIA folder
   if os.path.isdir(f'{root}/{item}'):
     print(f'> {root}/{item}')
     if item == 'media':
-      if os.path.isdir(f'{root}/{item}'):
-        shutil.rmtree(f'{root}/{item}')
-        print(f"- {root}/{item}")
+      for subitem in item:
+        if os.path.isdir(f'{root}/{item}/{subitem}'):
+          shutil.rmtree(f'{root}/{item}/{subitem}')
+          print(f"- {root}/{item}/{subitem}")
+        if os.path.exists(f'{root}/{item}/{subitem}'):
+          os.remove(f'{root}/{item}/{subitem}')
+          print(f"- '{root}/{item}/{subitem}'")
+    if item == 'staticfiles':
+      for subitem in item:
+        if os.path.isdir(f'{root}/{item}/{subitem}'):
+          shutil.rmtree(f'{root}/{item}/{subitem}')
+          print(f"- {root}/{item}/{subitem}")
+        if os.path.exists(f'{root}/{item}/{subitem}'):
+          os.remove(f'{root}/{item}/{subitem}')
+          print(f"- '{root}/{item}/{subitem}'")
+    if item == 'fileshare':
+      for subitem in item:
+        if os.path.isdir(f'{root}/{item}/{subitem}'):
+          shutil.rmtree(f'{root}/{item}/{subitem}')
+          print(f"- {root}/{item}/{subitem}")
+        if os.path.exists(f'{root}/{item}/{subitem}'):
+          os.remove(f'{root}/{item}/{subitem}')
+          print(f"- '{root}/{item}/{subitem}'")
+
 
     if os.path.exists(f'{root}/{item}'):
       for subitem in os.listdir(f'{root}/{item}'):
